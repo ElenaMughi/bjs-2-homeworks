@@ -19,9 +19,9 @@ function solveEquation(a, b, c) {
 function calculateTotalMortgage(percent, contribution, amount, date) {
   "use strict";
   let totalAmount = 0;
-  if (!Number.isNaN(percent)) {
-    if (!Number.isNaN(contribution)) {
-      if (!Number.isNaN(amount)) {
+  if (!isNaN(percent)) {
+    if (!isNaN(contribution)) {
+      if (!isNaN(amount)) {
 
         let finalDate = new Date(date);
         let startDate = new Date();
@@ -33,10 +33,19 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
         let mouthPayment = coefficient * (amount - contribution);
         totalAmount = mouthPayment * periodMonth;
 
-      } else { console.log(`${amount} не является числом`); }
-    } else { console.log(`${contribution} не является числом`); }
-  } else { console.log(`${percent} не является числом`); }
+      } else {
+        console.log(`Параметр "Общая стоимость" содержит неправильное значение "${amount}"`);
+        return `Параметр "Общая стоимость" содержит неправильное значение "${amount}"`;
+      }
+    } else {
+      console.log(`Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`);
+      return `Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`
+    }
+  } else {
+    console.log(`Параметр "Процентная ставка" содержит неправильное значение "${percent}"`);
+    return `Параметр "Процентная ставка" содержит неправильное значение "${percent}"`
+  }
   totalAmount = totalAmount.toFixed(2);
   console.log(`Общая сумма платежа ${totalAmount}`);
-  return totalAmount;
+  return Number(totalAmount);
 }
