@@ -35,7 +35,7 @@ class AlarmClock {
     checkClock(alarm) {
         //которая принимает звонок и проверяет: если текущее время совпадает со временем звонка, то вызывайте колбек.
         let date = this.getCurrentFormattedTime();
-        if (alarm.time === date) { return alarm.callback };
+        if (alarm.time === date) { return alarm.callback() };
     }
 
     start() {
